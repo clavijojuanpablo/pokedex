@@ -1,0 +1,286 @@
+*,
+*::after,
+*::before{
+  margin: 0;
+  box-sizing: border-box;
+}
+a{
+  all: unset;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*------------------HOME SCREEN--------------------*/
+
+
+.HomeScreen{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.HomeInfo{
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.HomeInfo h1{
+  color: #dd1a1a;
+}
+
+.HomeInfo form{
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.HomeInfo input{
+  height: 50px;  
+  width: 70%;
+  border: none;
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  padding: 10px;
+  color: #8f8f8f;
+}
+
+.HomeInfo button{
+  width: 30%;
+  height: 50px;
+  background-color: #dd1a1a;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.HomeInfo button:hover{
+  background-color: #131313;
+}
+
+.HomeFooter{
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.HomeFooter img{
+  position: absolute;
+  bottom: 0;
+}
+
+/*------------------POKEDEX HEADER--------------------*/
+
+
+.AppDashboard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.HeaderDashboard{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.RedLine{
+  height: 120px;
+  width: 100%;
+  background-color: #dd1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LogoContainer{
+  max-width: 1380px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-left: 35px;
+}
+
+.LogoContainer img{
+  position: absolute;
+  top: 55px;
+}
+
+.BlackLine{
+  height: 75px;
+  width: 100%;
+  background-color: #131313;
+
+  display: flex;
+  justify-content: center;
+}
+
+.IconContainer{
+  max-width: 1450px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 35px;
+}
+
+.IconContainer img{
+  position: absolute;
+  top: 100px;
+}
+
+/*------------------POKEDEX INPUT--------------------*/
+
+.InputContainer{
+  display: flex;
+  justify-content: center;
+  padding: 35px;
+  gap: 32px;
+}
+
+.InputName{
+  width: 50%;
+}
+
+.InputName input{
+  height: 50px;  
+  width: 70%;
+  border: none;
+  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  padding: 10px;
+  color: #8f8f8f;
+}
+
+.InputName button{
+  width: 30%;
+  height: 50px;
+  background-color: #dd1a1a;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.InputName button:hover{
+  background-color: #131313;
+}
+
+
+.InputType{
+  width: 50%;
+}
+
+#types{
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
+/*------------------POKEDEX DASHBOARD--------------------*/
+
+.PokedexDashboard{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1380px;
+}
+
+.WelcomeDashboard{
+  display: flex;
+  padding: 35px;
+}
+
+.WelcomeDashboard span{
+  color: #dd1a1a;
+  text-transform: capitalize;
+}
+
+.PokemonGroup{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+
+/*------------------POKEMON CARD--------------------*/
+
+.PokemonCard{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+  border: 15px solid black;
+  border-radius: 15px;
+  margin: 25px 15px;  
+  cursor: pointer;
+}
+
+.PokemonCard:hover{
+  transform: scale(1.08);
+  transition: .3s ease-out;
+}
+
+
+.ImgCard{
+  z-index: 2;
+}
+
+.ImgCard img {
+  margin-bottom: -75px;
+  width: 75%;
+  padding: 15px;
+}
+
+.InfoCard {
+  background-color: white;
+  width: 100%;
+  padding: 50px 25px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+.Stats{
+  display: flex;
+  justify-content: center;
+  gap: 75px;
+}
+
+.StatsRow1,
+.StatsRow2{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Stat{
+  font-size: 18px;
+  margin: 10px;
+}
+
+.Stat span{
+  font-weight: bold;
+}
+
