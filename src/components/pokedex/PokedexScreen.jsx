@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import { FaBackward } from 'react-icons/fa'
 import axios from 'axios'
 import PokeCard from './PokeCard'
 import Form from './Form'
 import Header from './Header'
 import Paginacion from '../general/Paginacion'
+import { Link } from 'react-router-dom'
 
 const PokedexScreen = () => {
 
@@ -83,10 +85,13 @@ const PokedexScreen = () => {
 
             <Header />
 
+
             <div className='PokedexDashboard'>
+
 
                 <div className="WelcomeDashboard">
                     <h2><span>Bienvenido {nameUser},</span> aquí podrás encontrar tu pokemón favorito.</h2>
+                    <Link to={`/`}><h3><FaBackward/> Haz click aquí para salir</h3></Link>
                 </div>
 
                 <Form

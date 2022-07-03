@@ -205,12 +205,19 @@ a{
 
 .WelcomeDashboard{
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 35px;
+  gap: 16px;
 }
 
 .WelcomeDashboard span{
   color: #dd1a1a;
   text-transform: capitalize;
+}
+
+.WelcomeDashboard h3{
+  cursor: pointer;
 }
 
 .PokemonGroup{
@@ -219,6 +226,27 @@ a{
   justify-content: center;
   padding: 10px;
   width: 100%;
+}
+
+.ButtonLogout{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 24px;
+  width: 100%;
+  margin: 50px 75px -75px 75px;
+  justify-content: flex-start;
+  cursor: pointer;
+  color: #dd1a1a;
+  margin-bottom: 50px;
+}
+
+.ButtonLogout h2:nth-child(2){
+  margin-top: -10px;
+}
+
+.ButtonLogout:hover{
+  color: black;
 }
 
 /*------------------POKEMON CARD--------------------*/
