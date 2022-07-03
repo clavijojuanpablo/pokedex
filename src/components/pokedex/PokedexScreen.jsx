@@ -5,6 +5,7 @@ import axios from 'axios'
 import PokeCard from './PokeCard'
 import Form from './Form'
 import Header from './Header'
+import Paginacion from '../general/Paginacion'
 
 const PokedexScreen = () => {
 
@@ -13,6 +14,13 @@ const PokedexScreen = () => {
 
     const [typeList, setTypeList] = useState() //GUARDA TODOS LOS NOMBRES DE LOS TIPOS
     const [filterType, setFilterType] = useState("All Pokemons") //GUARDA EL TIPO QUE ESTÉ LISTO
+
+    const [pokeSearch, setPokeSearch] = useState("")
+    const [filterPokemon, setFilterPokemon] = useState()
+
+    const [pagina, setPagina] = useState(1) //PAGINA INICIAL
+    const [porPagina, setPorPagina] = useState(8) //POKEMONS POR PAGINA
+    const [maximo, setMaximo] = useState(pokemons?.length) //MAXIMO POKEMONS
 
     useEffect(() => {
 
@@ -25,19 +33,22 @@ const PokedexScreen = () => {
 
         //SOLICITAMOS TODOS LOS POKEMON
         if (filterType === "All Pokemons") {
-            const URL_POKEMONS = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=24'
+            const URL_POKEMONS = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500'
             axios.get(URL_POKEMONS)
                 .then(res => setPokemons(res.data.results))
                 .catch(err => console.log(err))
 
 
-        //SOLICITAMOS TODOS LOS POKEMON POR TIPO
+            //SOLICITAMOS TODOS LOS POKEMON POR TIPO
         } else {
             const URL = `https://pokeapi.co/api/v2/type/${filterType}`
             axios.get(URL)
                 .then(res => {
                     const array = res.data.pokemon.map(e => e.pokemon)
                     setPokemons(array)
+                    setFilterPokemon(array)
+                    setPagina(1)
+                    setPokeSearch(" ")
                 })
                 .catch(err => console.log(err))
         }
@@ -45,15 +56,26 @@ const PokedexScreen = () => {
 
 
     //-----------------FILTRO NAME--------------------------------------//
-    const [pokeSearch, setPokeSearch] = useState("")
-    const [filterPokemon, setFilterPokemon] = useState()
 
     useEffect(() => {
         if (pokemons) {
             setFilterPokemon(pokemons.filter(e => e.name.includes(pokeSearch.toLowerCase())))
+            setPagina(1)
         }
     }, [pokeSearch])
-    
+
+
+    //-----------------PAGINACION--------------------------------------//
+
+
+    useEffect(() => {
+        if (filterPokemon) {
+            setMaximo(Math.ceil(filterPokemon?.length / porPagina))
+        } else {
+            setMaximo(Math.ceil(pokemons?.length / porPagina))
+        }
+    }, [pokemons, filterPokemon])
+
 
 
     return (
@@ -74,17 +96,18 @@ const PokedexScreen = () => {
                 />
 
 
+                <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo} />
                 <div className="PokemonGroup">
                     {
                         filterPokemon ?
-                            filterPokemon?.map(pokemon => (
+                            filterPokemon?.slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map(pokemon => (
                                 <PokeCard
                                     key={pokemon.url}
                                     url={pokemon.url}
                                 />
                             ))
                             :
-                            pokemons?.map(pokemon => (
+                            pokemons?.slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map(pokemon => (
                                 <PokeCard
                                     key={pokemon.url}
                                     url={pokemon.url}
